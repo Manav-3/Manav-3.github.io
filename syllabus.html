@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-
+<html>
 <head>
     <title>Menu</title>
     <style>
@@ -75,9 +75,9 @@
         }
 
         u {
-            font-size: 25px;
+            font-size: 22px;
             text-decoration: underline;
-            line-heig ht: 60px;
+            line-height: 60px;
         }
 
         .dec {
@@ -2180,10 +2180,559 @@
                 Simple computing operation such as cut, copy, paste, find and replace are supported,<br>
                 It allows user to use pre-defined layout, themes and templates which helps in faster development and
                 design of presentation.<br>
-                Slide transition and effects can also be used for further requirement,<br>
+                Slide transition and effects can also be used for further requirement,<br>/
                 We can create our own custom animation.<br>
                 It supports both internal and external hyperlink.<br>
                 Different bar, graphs, charts can be used to convey, detailed and precise information.<br>
                 Internet features such as web toolbar, online help, web linking can also be done.<br>
             </div>
+            <div id="text6"></div>
+            <h2>Chapter 5: Programming Concepts and Logics</h2>
+
+            <div class="text6">
+
+<br><br>
+
+<u>Introduction:</u>
+
+<br><br>
+
+<p>Computers, by themselves, cannot perform actions unless they are given specific commands. These commands are given in the form of a programming language, and the set of instructions to carry out specific tasks is called a program. Multiple programs can be combined to form software, which performs various functions. However, since computers do not understand programming languages directly, there is a need for a language translator (assembler, compiler, or interpreter) to convert the program into machine-readable language. The program written by the programmer is called the source program, and after translation, it becomes an executable program.</p>
+
+<br><br>
+
+<u>Qualities of Good Programs:</u>
+
+<br><br>
+
+<menu>
+    <li>Easy to understand</li>
+    <li>Error-free (correct)</li>
+    <li>Reliable</li>
+    <li>User-friendly interface</li>
+    <li>Portable and flexible</li>
+</menu>
+
+<br><br>
+
+<u>Programming Language:</u>
+
+<br><br>
+
+<p>Programming languages are the means of communication between the user and the computer, consisting of keywords, operators, loops, variables, and other elements. The process of writing programs is called programming, and the person who writes them is known as a programmer.</p>
+
+<br><br>
+
+<u>Types of Programming Languages:</u>
+
+<br><br>
+
+<u>1. Low-Level Language:</u>
+
+<br><br>
+
+<p>These are machine-dependent languages, meaning a program written for one system cannot run on another. Low-level programming requires detailed knowledge of the system's architecture and is time-consuming and challenging. They include:</p>
+
+<br><br>
+
+<u>a. Machine Level Language (1GL):</u>
+
+<br><br>
+
+<p>A sequence of binary digits (0s and 1s) understood directly by the processor. It offers high execution speed but is difficult to program and debug.</p>
+
+<br><br>
+
+<menu>
+    <li>High execution speed since they are directly understood by the processor</li>
+    <li>No need for a language processor in some cases</li>
+    <li>Useful for programming specific-purpose computers</li>
+</menu>
+
+<br><br>
+
+<menu>
+    <li>Difficult and time-consuming to develop and debug programs</li>
+    <li>Machine-dependent, limiting portability</li>
+    <li>Binary syntax is hard to remember and work with</li>
+</menu>
+
+<br><br>
+
+<u>b. Assembly Language (2GL):</u>
+
+<br><br>
+
+<p>Uses mnemonics (symbolic instructions) like ADD, SUB, etc., making it easier than machine language but still machine-dependent. An assembler is required to convert it into machine code.</p>
+
+<br><br>
+
+<menu>
+    <li>Easier to write, debug, and understand compared to machine level language</li>
+    <li>Higher execution speed compared to high-level languages</li>
+    <li>Used for developing device drivers</li>
+</menu>
+
+<br><br>
+
+<menu>
+    <li>Machine-dependent, limiting portability</li>
+    <li>More complex due to the use of mnemonics</li>
+    <li>More difficult and time-consuming to develop and debug compared to high-level languages</li>
+</menu>
+
+<br><br>
+
+<u>2. High-Level Language (HLL):</u>
+
+<br><br>
+
+<p>High-level languages resemble English and use mathematical notations, making them easier to understand and debug. They are machine-independent, meaning a program written on one system can run on another. However, since they aren't directly understood by computers, they need a compiler or interpreter to translate them into machine language. Examples include C, Python, and JavaScript.</p>
+
+<br><br>
+
+<menu>
+    <li>Easier to write, debug, and understand due to English-like syntax</li>
+    <li>Machine-independent, promoting portability</li>
+    <li>Faster program development with less effort required</li>
+</menu>
+
+<br><br>
+
+<menu>
+    <li>Slower execution compared to low-level languages</li>
+    <li>Requires translation into machine code</li>
+</menu>
+
+<br><br>
+
+<u>High-Level Language Classification:</u>
+
+<br><br>
+
+<u>a. Procedural-Oriented Language (3GL):</u>
+
+<br><br>
+
+<p>Focuses on procedures or functions. This approach is more complex for large programs but is widely used for general-purpose programming. Examples include C, FORTRAN, and QBasic.</p>
+
+<br><br>
+
+<menu>
+    <li>Easier program development and debugging</li>
+    <li>Machine-independent</li>
+    <li>Used to develop user-friendly software</li>
+</menu>
+
+<br><br>
+
+<menu>
+    <li>Requires a language processor (e.g., a compiler)</li>
+    <li>Slower program execution</li>
+    <li>Less data security compared to other languages</li>
+</menu>
+
+<br><br>
+
+<u>b. Object-Oriented Language (4GL):</u>
+
+<br><br>
+
+<p>Focuses on data and allows the user to specify what the output should be, not how to manipulate the data. It uses features like data encapsulation, inheritance, and polymorphism. Examples include C++, Java, and C#.</p>
+
+<br><br>
+
+<menu>
+    <li>Suitable for developing web-based applications and software</li>
+    <li>Machine-independent</li>
+    <li>Easier development of user-friendly software</li>
+</menu>
+
+<br><br>
+
+<menu>
+    <li>Requires a language processor (e.g., a compiler)</li>
+    <li>Slower execution than low-level languages</li>
+    <li>Difficult to develop hardware-oriented applications</li>
+</menu>
+
+<br><br>
+
+<u>c. Natural Language (5GL):</u>
+
+<br><br>
+
+<p>A developing programming language that uses common human language to write programs, resembling normal sentences. For example, in PROLOG, one might write: "Who are the salesmen who sold more than 30,000 products last month?"</p>
+
+<br><br>
+
+<menu>
+    <li>Easy to develop and debug programs</li>
+    <li>Machine-independent</li>
+    <li>User-friendly programming environment</li>
+</menu>
+
+<br><br>
+
+<menu>
+    <li>Requires a language processor</li>
+    <li>Slower program execution</li>
+    <li>Difficult to develop hardware-oriented applications</li>
+</menu>
+
+<br><br>
+
+<u>Language Translator/Processor:</u>
+
+<br><br>
+
+<p>A language translator converts a program written in assembly or high-level language (source program) into machine-level language (object program). These translators make it easier to write code in higher-level languages rather than in binary.</p>
+
+<br><br>
+
+<menu>
+    <li><b>Assembler:</b> Converts assembly language code into machine language. It performs the translation quickly since assembly language is close to machine code.</li>
+    <li><b>Compiler:</b> A language processor that translates a high-level language program into machine code all at once. Examples include C, C++, and Java. While this method is efficient, it can make debugging complex and time-consuming.</li>
+    <li><b>Interpreter:</b> Converts high-level language code into machine code one statement at a time. It makes debugging easier and quicker than a compiler, but the program execution is slower. Examples include BASIC, PHP, and Python.</li>
+</menu>
+
+<br><br>
+
+<u>Difference Between Compiler and Interpreter:</u>
+
+<br><br>
+
+<menu>
+    <li><b>Compiler:</b> Translates the entire program at once into machine code before execution, making it faster at runtime but slower during development due to longer compilation time. It also makes debugging more complex.</li>
+    <li><b>Interpreter:</b> Translates one statement at a time and executes it immediately, which makes it slower at runtime but easier to debug and modify during development.</li>
+</menu>
+            </div>
+            <div id="text7"></div>
+            <h2>Chapter 6: Programming Concepts and logics</h2>
+            <div class="text7">
+                <u>Introduction to the Internet</u><br><br>
+                The Internet is a vast network of interconnected computers, forming a "network of networks." It allows for the exchange of data and communication between computers across the globe. To connect to the Internet, several components are needed:
+                <menu>
+                    <li>A computer with TCP/IP (Transmission Control Protocol/Internet Protocol) enabled and a web browser.</li>
+                        <li> An account with an Internet Service Provider (ISP) to access the Internet.</li>
+                            <li> A telephone line to connect to the Internet.</li>
+                                <li> A modem to link the telephone line to the computer.</li>
+                                    <li> The computer hardware should meet the following minimum specifications: a 386 microprocessor chip, 16MB RAM, a color monitor with 256 color support and 640x480 resolution, 200MB of free hard disk space, and a multimedia sound card with speakers.</li>
+                    
+                </menu>
+                <u>Internet Services and Applications</u><br><br>
+                Several services are available on the Internet that cater to different needs, some of which include:<br><br>
+<menu>
+    <li>World Wide Web (WWW): The WWW is a collection of services that are interconnected through hypertext, providing links between web documents. Created in 1990 by the European Particle Physics Laboratory in Geneva, it uses the HTTP (Hypertext Transfer Protocol) for data transfer. It's the most widely used service on the Internet, allowing for browsing and sharing information across the web.</li>
+
+        <li> Web Browser: A web browser is essential software that allows users to access and view web pages on the Internet. Some popular web browsers include Internet Explorer, Safari, Mozilla Firefox, Opera, and Netscape Navigator. Without a browser, one cannot access the WWW.</li>
+        
+            <li>FTP (File Transfer Protocol): FTP is a tool that allows users to transfer files (data, graphics, text, etc.) between computers over the Internet. It provides a simple method for sharing files.
+        
+                <li>Electronic Mail (E-mail): E-mail is a widely used feature of the Internet that allows users to send and receive messages electronically. E-mails can include a variety of media types like text, graphics, video, animation, and audio.</li>
+        
+                    <li> Voicemail: Voicemail is a service that records audio messages when users are unavailable to answer phone calls. It allows easy communication through recorded voice messages.</li>
+        
+                        <li> USENET (View and News): USENET, or Bulletin Board Service (BBS), is a platform for posting and viewing messages in newsgroups on specific topics. It serves as an early form of online discussions and forums.</li>
+        
+                            <li>Chat: Chat allows users to communicate in real-time by typing messages in a chat room. It provides an easy way to exchange ideas and information, and offline messaging is also available if the other person isn't online.</li>
+        
+                                <li>IRC (Internet Relay Chat): IRC is a massive multi-user live chat service. Users can create channels and communicate with anyone who is online, making it an essential tool for real-time communication.</li>
+        
+                                    <li>Video Conferencing: Video conferencing, often referred to as webcam chatting, enables real-time face-to-face communication over the Internet. It uses the same technology as IRC but adds sound and video for visual communication.</li>
+        
+                                        <li> Universal Resource Locator (URL): A URL is a unique address that identifies the location of a file or resource on the Internet. The format of a URL includes the protocol (e.g., HTTP), the host computer name, domain name, and domain type (e.g., .com or .edu).</li>
+        
+                                            <li>E-Fax (Electronic Fax): E-Fax is a service that allows users to send and receive faxes directly through the Internet, similar to sending an e-mail. It provides an alternative to traditional fax machines.</li>
+        
+                                                <li>TELNET (Remote Login): TELNET allows users to log into remote computers using a Telnet program. It allows users to access and interact with other computer systems across different locations, even thousands of miles away.</li>
+        
+                                                    <li>Navigators/Information Servers: These utilities help users search, locate, and retrieve information on the Internet. Popular tools include Gopher, Archie, Hytelnet, and WAIS. The most popular navigator today is the WWW, which has significantly contributed to the growth of Internet resources.</li>
+</menu>
+                <u>Internet Terminologies</u><br><br>
+                Several terms are commonly used in Internet-related contexts:<menu>
+                    <li>ISP (Internet Service Provider): An ISP provides access to the Internet. Examples of ISPs in Nepal include Mercantile, Everest Net, and WorldLink.</li>
+                        <li> Link: A link is a clickable reference in a webpage that directs users to another page or resource on the Internet.</li>
+                            <li> Search Engine: Search engines like Yahoo, Excite, and Google help users find websites and information on the Internet.</li>
+                                <li> Domain Name and IP Address: A domain name is a unique identifier for a website. Each domain name is associated with an IP address, which is the numerical identifier that allows data transfer between computers.</li>
+                                    <li>DNS Server: The Domain Name System (DNS) server is responsible for translating domain names into their corresponding IP addresses.</li>
+                                        <li>Web Server: A web server is a computer that stores and serves web pages to users who request them.</li>
+                                            <li>Usernet Newsgroups or Net News: These are categorized groups of messages or posts on a specific topic. They help users quickly find information about specific subjects.</li>
+                                                <li>Mailing Lists: Mailing lists allow users to subscribe to and receive regular updates or information sent via e-mail.</li>
+                                                    <li>POP Server: The Post Office Protocol (POP) server stores incoming e-mails and allows users to retrieve them.</li>
+                                                        <li>SMTP Server: The Simple Mail Transfer Protocol (SMTP) server handles the transfer of e-mails between servers.</li>
+                                                            <li>FTP (File Transfer Protocol): FTP is a protocol for transferring files over the Internet. It is essential for file-sharing tasks and supports protocols like TCP/IP.</li>
+                                                                <li>Anonymous FTP: This refers to retrieving files from a server without requiring a login, typically used for public file-sharing.</li>
+                                                                    <li>HTTP (Hypertext Transfer Protocol): HTTP is the protocol used for transmitting web pages from servers to browsers. It is the foundation of the World Wide Web.</li>
+                                                                        <li>Proxy Server: A proxy server is used to improve the access speed of web browsers by caching data and facilitating quicker access to frequently visited websites.</li>
+                                                                            <li>Internet Roaming: Internet roaming allows users to access their Internet accounts from any part of the world, provided their ISP is part of the global roaming network.</li>
+                </menu>    
+            <u>Introduction to HTML</u><br><br>
+            HTML (HyperText Markup Language) is the standard language for creating web pages. It defines the structure of a webpage by using a series of tags and attributes. HTML was developed by Tim Berners-Lee and is based on SGML (Standard Generalized Markup Language). The language has evolved through multiple versions, including HTML, HTML+, HTML 1.0, HTML 2.0, HTML 3.2, HTML 4.01, and HTML 5.0. HTML is used to:
+<menu>
+    <li>Create the basic layout and design of a webpage.</li>
+        <li>Embed multimedia elements such as images, audio, and video.</li>
+            <li>Format text, including bold, italic, and underlined styles.</li>
+                <li>Create hyperlinks and lists.</li>
+</menu>
+
+<u>Advantages of HTML
+</u><br><br>HTML is user-friendly, compatible with all browsers and operating systems, and easy to learn. It allows for quick loading times and is widely supported by search engines. HTML also benefits from constant updates, such as the advanced features found in HTML 5.0.
+<br><br>
+<u>Disadvantages of HTML
+</u><br><br>While HTML is essential for basic webpage creation, it has limitations. It can't create dynamic webpages on its own and is not a programming language. It also has compatibility issues, and there is no universally accepted standard for HTML.
+
+<u>Tags</u><br><br>HTML tags are instructions used by browsers to organize and display web content. Tags are written within angle brackets (< >), and they can be divided into two types: pair tags (which have both an opening and closing tag) and singular tags (which only have an opening tag). Tags are often enhanced with attributes, which provide additional features like background color, text color, and images.
+
+Webpage and Website Terminology
+A webpage is a single HTML document that displays content on the web, while a website is a collection of interrelated webpages. The home page is the introductory page that loads when accessing a website. A web browser is an application used to access and display webpages. The URL (Uniform Resource Locator) is the address that identifies a specific resource on the web.
+
+Database Management System (DBMS)
+A DBMS is software that manages the storage, retrieval, and manipulation of data within a database. It ensures that data is organized efficiently for quick access. Examples include MS Access, MySQL, and Oracle. DBMSs are essential for managing large datasets, improving security, and reducing data redundancy.
+
+Advantages of DBMS
+DBMS offers several benefits, including fast data retrieval, better data security, reduced redundancy, and improved consistency. It also supports data sharing across networks and provides an organized structure for storing and managing data.
+
+Disadvantages of DBMS
+Despite its benefits, DBMSs can be costly to install and maintain, require significant disk space, and may involve privacy and security concerns. They also require skilled personnel to manage and maintain the system effectively.
+            
+            
+            
+            
+            
+            
+            
+            </div>
+            <div id="text8"></div>
+            <h2>Chapter 7: Multimedia</h2>
+<div class="text8">
+    <br><br>
+
+    <u>Introduction:</u>
+    
+    <br><br>
+    
+    <p>Multimedia consists of two words: 'Multi' and 'Media,' where 'multi' means many and 'media' refers to ways or mediums of expressing information. Therefore, multimedia is the method of presenting information in various forms such as text, audio, video, graphics, and animation. The integration of these different media types is used to enhance communication and understanding. By combining these media, information can be illustrated more effectively. A multimedia computer system integrates multimedia hardware and software, enabling the combination of text, audio, video, animation, and graphics for better communication. Examples of multimedia hardware include printers, projectors, webcams, microphones, and digital cameras. Software like text editors (MS Word), presentation tools (PowerPoint), photo editors (Photoshop), video editors (iMovie), and accounting packages (Tally) help in the creation and integration of multimedia content. For example, video is created by combining audio and images.</p>
+    
+    <br><br>
+    
+    <u>Advantages/Merits/Pros/Importance of Multimedia:</u>
+    
+    <br><br>
+    
+    <menu>
+        <li>It enhances communication effectiveness.</li>
+        <li>It improves understanding of complex topics.</li>
+        <li>Games, cartoons, and movies become more engaging and realistic.</li>
+        <li>It makes the teaching and learning process more interactive and engaging.</li>
+        <li>Virtual reality and simulations have become more realistic.</li>
+    </menu>
+    
+    <br><br>
+    
+    <u>Disadvantages/De-merits/Cons/Limitation of Multimedia:</u>
+    
+    <br><br>
+    
+    <menu>
+        <li>Multimedia components can be expensive.</li>
+        <li>Technical knowledge and IT literacy are needed to operate multimedia systems.</li>
+        <li>Technology is constantly evolving, making it hard to keep up.</li>
+        <li>Multimedia devices depend on electricity to function.</li>
+    </menu>
+    
+    <br><br>
+    
+    <u>Components/Elements of Multimedia:</u>
+    
+    <br><br>
+    
+    <u>Text:</u>
+    
+    <br><br>
+    
+    <p>Text is a collection of alphanumeric characters and can be anything from a single word to a paragraph. It is the basic form of expressing information in multimedia. Text can be customized using word processors like MS Word and Notepad, allowing for different sizes, colors, and styles. The file extensions for text documents include .docx and .txt.</p>
+    
+    <br><br>
+    
+    <u>Graphics/Images:</u>
+    
+    <br><br>
+    
+    <p>Graphics or images refer to pictures, which are more effective than text at conveying information. The smallest unit of an image is called a pixel, and the quality of an image is measured by its resolution (the number of pixels). Software like Adobe Photoshop, Corel Draw, and Adobe InDesign is used to create and customize images. Common image file extensions include .jpeg and .png.</p>
+    
+    <br><br>
+    
+    <u>Audio:</u>
+    
+    <br><br>
+    
+    <p>Audio is a key component of multimedia, allowing for the sensation of hearing. Audio enhances the understanding of topics by incorporating human voices, instrumental sounds, or synthesized audio. Modern audio is transferred digitally. Software like Windows Media Player is used to play audio. Popular audio file extensions include .mp3 and .wma.</p>
+    
+    <br><br>
+    
+    <u>Video:</u>
+    
+    <br><br>
+    
+    <p>Video consists of a series of static images (frames) shown in quick succession. The term "frames per second" (FPS) measures the smoothness of a video. Standard FPS values are 30 or 60. Multimedia software like iMovie, Final Cut Pro, and Filmora is used to edit and customize videos. Common video file extensions include .mp4 and .mpeg.</p>
+    
+    <br><br>
+    
+    <u>Animation:</u>
+    
+    <br><br>
+    
+    <p>Animation involves the rapid display of computer-generated vector images to create visual effects. These images can be 2D or 3D, with 3D being more realistic. Animation is widely used in movies and entertainment industries to convey complex ideas. Software like Maya Animation, AutoCAD, and Macromedia Flash is used to create animations. Common animation file extensions include .flv and .gif.</p>
+    
+    <br><br>
+    
+    <u>Applications of Multimedia:</u>
+    
+    <br><br>
+    
+    <menu>
+        <li>Education</li>
+        <li>Communication</li>
+        <li>Entertainment</li>
+        <li>Medicine</li>
+        <li>Science and Technology</li>
+        <li>Advertisement</li>
+        <li>Websites/Webpages</li>
+        <li>Research and Engineering</li>
+    </menu>
+</div>
+<div id="text9"></div>
+<div class="text9">
+    <h2>Chapter 8. Information Security and Cyber Law</h2>
+
+<br><br>
+
+<u>1. What is Information Technology? Describe it with its social impacts.</u>
+
+<br><br>
+
+<p>Information Technology is a modern concept or methodology of communication. It is the combined form of Information and Communication Technology, which is highly used for the information flow and in many other fields. IT has made the world closer day by day. One can easily send and receive the message throughout the world within a second. It has been widely used in education, industry, banks, research centers, hospitals, etc. It is being used as a learning and teaching tool in the sector of education. Distant learning has become possible due to the advancement of IT. It has been highly used in the industries to control quantity and quality of the product. It is equally used for management in hospitals and for the treatment of patients. IT is being used in the sector of animation and other entertainment. Scientists can use computers or IT for their research and experiments. Space technology has become possible due to IT. Thus, it has a positive impact on society. However, there are negative impacts as well. As the use of IT increases, cyber crimes also increase. Cybercriminals can easily steal others' information or data, disclose secrecy, and spread viruses in the network, disturbing social peace and security.</p>
+
+<br><br>
+
+<u>Information Security</u>
+
+<br><br>
+
+<p>In a network or cyberspace, there is always a threat of cyberattacks that may lead to the loss and damage of our precious data and information. It is necessary to be aware of such malicious activity. We need to adopt different measures while using a computer to protect against intentional and accidental threats. Information security refers to the process of protecting our network infrastructure from unauthorized access, misuse, modification, destruction, or any malfunction. Several physical and software preventive measures can protect us from such unethical activities. Information security helps create a secure environment for computers, users, and programs.</p>
+
+<br><br>
+
+<p>Information security can mitigate security threats and attacks. A security threat is a potential danger that might cause unwanted activities in a computer system, breaching security and causing harm. A security attack is an attempt to gain unauthorized access to destroy, expose, steal, or alter valuable data and information. These attacks can be triggered by malicious applications such as viruses, spyware, Trojan horses, and worms.</p>
+
+<br><br>
+
+<p>Information security is built around three major objectives:</p>
+
+<menu>
+    <li><b>Confidentiality:</b> Information is available only to authorized individuals, ensuring that others cannot use or process it without proper authorization.</li>
+    <li><b>Integrity:</b> Accuracy and completeness of data and information, ensuring that data cannot be tampered with without proper authorization.</li>
+    <li><b>Availability:</b> Information must always be available as needed, meaning valuable data can be accessed quickly when required.</li>
+</menu>
+
+<br><br>
+
+<u>Cryptography</u>
+
+<br><br>
+
+<p>The term cryptography comes from the Greek word meaning "Secret writing." It is the art and science of hiding information and provides security for information. Cryptography is used for secure communication between individuals, government agencies, and military forces. Cryptography generally refers to encryption and decryption. Encryption is the process of converting plaintext (a readable message) into an unreadable format so that anyone who tries to view the message cannot read the original content. The plaintext is converted into unreadable text using special algorithms and keys. This unreadable text is called ciphertext. Decryption is the reverse process of encryption, where ciphertext is converted back into a readable form. Encryption is sometimes referred to as encoding or enciphering, while decryption is called decoding or deciphering.</p>
+
+<br><br>
+
+<u>2. What is Digital Divide?</u>
+
+<br><br>
+
+<p>The digital divide refers to the gap between people who are computer literate and those who are not. It signifies a division between those with technical knowledge and those without, particularly in the field of Information Technology. IT is a modern technology, and its effective use requires a sound understanding of computers. However, many people still lack knowledge of computer operations and terms. This gap is known as the digital divide, which became prominent in the mid-1990s through political speeches and media discussions. The divide continues to grow, particularly between urban and rural populations, educated and uneducated individuals, and rich and poor communities. Governments worldwide are working to bridge this gap.</p>
+
+<br><br>
+
+<u>3. What are Computer Ethics or Cyber Ethics?</u>
+
+<br><br>
+
+<p>Computer ethics, also known as cyber ethics, are a set of moral principles or codes of conduct that should be followed by computer professionals. The goal of these ethics is to prevent criminal activities through the use of computers. Some examples of computer ethics include:</p>
+
+<menu>
+    <li>Do not use someone else's password.</li>
+    <li>Do not steal others' information.</li>
+    <li>Do not use computers to harm others.</li>
+    <li>Do not disclose others' secrets.</li>
+    <li>Do not spread viruses in the network.</li>
+    <li>Do not copy licensed software that you have not paid for.</li>
+    <li>Do not alter others' data.</li>
+    <li>Do not take possession of other people's intellectual property.</li>
+    <li>Do not misuse electronic transactions.</li>
+    <li>Do not use computers to bear false witness.</li>
+</menu>
+
+<br><br>
+
+<u>4. What is Cyber Crime? List out some examples of Cyber Crimes.</u>
+
+<br><br>
+
+<p>Cybercrime refers to the misuse of computers, the Internet, or other electronic media. As the use of Information Technology increases, the incidence of cybercrime also grows. Some examples of cybercrime include:</p>
+
+<menu>
+    <li>Misuse of computers</li>
+    <li>Spreading viruses</li>
+    <li>Stealing others' information</li>
+    <li>Pirating licensed software</li>
+    <li>Disclosing others' secrets</li>
+    <li>Misuse of electronic transactions and media</li>
+    <li>Posting rude or vulgar comments on the Internet regarding racial, communal, and other issues</li>
+    <li>Alteration of others' data without permission</li>
+    <li>Spying on others' information</li>
+    <li>Cracking or hacking</li>
+    <li>Password guessing</li>
+    <li>Salami saving and data diddling</li>
+    <li>Forgery</li>
+    <li>DOS attacks</li>
+</menu>
+
+<br><br>
+
+<u>5. What is Cyber Law? Define and write some provisions of it.</u>
+
+<br><br>
+
+<p>Cyber Law refers to the legal framework governing the use of computers, the Internet, and other electronic media, particularly focusing on the misuse of these technologies. Cyber ethics suggest avoiding cybercrimes, while cyber law defines punishments for violations. In Nepal, the government issued Cyber Law on 11th Falgun, 2061 (18th March 2005), known as "The Electronic Transaction Ordinance, 2005." This law covers several provisions:</p>
+
+<menu>
+    <li>Electronic and Digital Signature Law</li>
+    <li>Intellectual Property Law</li>
+    <li>Copyright Law</li>
+    <li>Trademark Law</li>
+    <li>Semiconductor Law</li>
+    <li>Patent Law</li>
+    <li>Telecommunication Law</li>
+    <li>Data Protection and Privacy Law</li>
+</menu>
+
+<br><br>
+
+<u>6. Explain the different objectives of IT Policy of Nepal.</u>
+
+<br><br>
+
+<p>The IT policies of Nepal include:</p>
+
+<menu>
+    <li>To declare IT as a high-priority sector for the government and make it practical.</li>
+    <li>To establish knowledge-based industries to increase employment.</li>
+    <li>To make public information and service delivery inclusive and effective through e-government.</li>
+    <li>To increase the productive use of IT in social, economic, and business organizations.</li>
+    <li>To enhance access to IT-related international efforts and developments.</li>
+    <li>To make the Government Integrated Data Center (GIDC) effective as infrastructure for IT development.</li>
+</menu>
+</div>
 </body>
+</html>
