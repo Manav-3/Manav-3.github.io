@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>DBMS Assignment - Extended</title>
+    <link rel="icon" type="image/x-icon" href="manav.jpg">
+    <style>
+        div {
+            background-attachment: fixed;
+            margin-left: 12%;
+            margin-right: 30%;
+            margin-top: 0%;
+            margin-bottom: 0%;
+            font-family: 'Times New Roman', Times, serif;
+            font-weight: 100;
+            color: #efeeef;
+            font-size: 20px;
+        }
+
+        .bar {
+            margin-left: 3px;
+        }
+
+        body {
+            background-color: #2d0a03;
+        }
+
+        h2, a {
+            color: #ffe8c5;
+        }
+
+        h3 {
+            text-decoration: underline;
+            color: #ffe8c5;
+        }
+
+        ul {
+            margin-top: 0;
+            margin-bottom: 1em;
+        }
+    </style>
+</head>
+<body>
+<div class="bar"><a href="index.html">Return to Main Page</a></div>
+<div>
+    <h2>DBMS Extended Questions</h2>
+
+    <h3>1. What is Database and DBMS? List out the advantages and disadvantages of DBMS.</h3>
+    <p><strong>Database:</strong> A structured collection of data.</p>
+    <p><strong>DBMS:</strong> A system software for creating and managing databases.</p>
+    <ul>
+        <li><strong>Advantages:</strong> Reduces redundancy, ensures consistency, supports sharing, provides security, backup and recovery.</li>
+        <li><strong>Disadvantages:</strong> Costly, complex, requires skilled staff, risk of failure.</li>
+    </ul>
+
+    <h3>2. Differentiate between file processing system and DBMS. Give at least four points.</h3>
+    <ul>
+        <li>File systems have high redundancy; DBMS reduces it.</li>
+        <li>File systems lack integrity; DBMS ensures it.</li>
+        <li>Sharing is limited in file systems; DBMS enables it.</li>
+        <li>File systems lack security; DBMS enforces it.</li>
+    </ul>
+
+    <h3>3. Explain the different models of DBMS with advantages and disadvantages.</h3>
+    <ul>
+        <li><strong>Hierarchical Model:</strong> Tree structure. Simple but rigid.</li>
+        <li><strong>Network Model:</strong> Graph structure. Flexible but complex.</li>
+        <li><strong>Relational Model:</strong> Tabular structure. Easy to use but resource-intensive.</li>
+        <li><strong>Object-Oriented Model:</strong> Real-world representation. Powerful but less common.</li>
+    </ul>
+
+    <h3>4. What is a relational database? How is it different from other database models?</h3>
+    <p>A relational database stores data in tables using rows and columns. It uses keys to relate tables and supports SQL. It's more flexible and widely used than hierarchical or network models.</p>
+
+    <h3>5. What is data redundancy? How does DBMS help in reducing it?</h3>
+    <p>Data redundancy is repeated data. DBMS reduces it by centralizing storage and using normalization.</p>
+
+    <h3>6. Write differentiate between centralized and distributed database systems.</h3>
+    <ul>
+        <li><strong>Centralized:</strong> Data in one location, simpler but risky if failed.</li>
+        <li><strong>Distributed:</strong> Data across locations, more reliable but complex.</li>
+    </ul>
+
+    <h3>7. Who is Database Administrator (DBA)? What are the major responsibilities of DBA?</h3>
+    <p>A DBA manages and maintains the database system.</p>
+    <ul>
+        <li>Design and implementation</li>
+        <li>Backup and recovery</li>
+        <li>Performance tuning</li>
+        <li>Security and access control</li>
+    </ul>
+
+    <h3>8. Define normalization. Explain 1NF, 2NF and 3NF with suitable examples.</h3>
+    <p><strong>Normalization:</strong> Organizing data to reduce redundancy.</p>
+    <ul>
+        <li><strong>1NF:</strong> Atomic values only.</li>
+        <li><strong>2NF:</strong> Full dependency on primary key.</li>
+        <li><strong>3NF:</strong> No transitive dependency.</li>
+    </ul>
+
+    <h3>9. Explain the terms: primary key, foreign key, and candidate key with examples.</h3>
+    <ul>
+        <li><strong>Primary Key:</strong> Uniquely identifies a row. E.g., Student_ID.</li>
+        <li><strong>Foreign Key:</strong> Refers to primary key in another table. E.g., Course_ID in Enrollment table.</li>
+        <li><strong>Candidate Key:</strong> All potential primary keys. E.g., Email, Roll Number.</li>
+    </ul>
+
+    <h3>10. What is SQL? Explain its components and common functions.</h3>
+    <p><strong>SQL:</strong> Structured Query Language used to interact with relational databases.</p>
+    <ul>
+        <li><strong>DDL:</strong> CREATE, ALTER, DROP</li>
+        <li><strong>DML:</strong> SELECT, INSERT, UPDATE, DELETE</li>
+        <li><strong>DCL:</strong> GRANT, REVOKE</li>
+        <li><strong>TCL:</strong> COMMIT, ROLLBACK</li>
+        <li><strong>Functions:</strong> COUNT(), SUM(), AVG(), NOW()</li>
+    </ul>
+
+    <h3>11. Write SQL commands to perform the following operations:</h3>
+<ul>
+   <li><strong>b.</strong> Insert records into the students table with appropriate values.<br>
+    <code>INSERT INTO students (Id, Name, Class, Marks) VALUES<br>
+        &nbsp;&nbsp;(1, 'Anita Bhusal', '11I', 78),<br>
+        &nbsp;&nbsp;(2, 'Onyx Rai', '12J', 65),<br>
+        &nbsp;&nbsp;(3, 'Oscar Bhusal', '11H', 72),<br>
+        &nbsp;&nbsp;(4, 'Bhaskar Kushal', '11B', 88),<br>
+        &nbsp;&nbsp;(5, 'Master Dushal', '12J', 91);&nbsp;<br>
+   
+        ;</code></li>
+    <img src="1.jpg" alt="Result 1">
+
+    <li><strong>b.</strong> Insert records into the students table with appropriate values.<br>
+    <code>INSERT INTO students (Id, Name, Class, Marks) VALUES<br>
+        &nbsp;&nbsp;(1, 'Anita Bhusal', '11I', 78),<br>
+        &nbsp;&nbsp;(2, 'Onyx Rai', '12J', 65),<br>
+        &nbsp;&nbsp;(3, 'Oscar Bhusal', '11H', 72),<br>
+        &nbsp;&nbsp;(4, 'Bhaskar Kushal', '11B', 88),<br>
+        &nbsp;&nbsp;(5, 'Master Dushal', '12J', 91);&nbsp;(1, 'Pratik Bajracharya', '11I', 78),<br>
+        ,<br>
+        &nbsp;&nbsp;(4, 'Bhaskar Kushal', '11B', 88),<br>
+        &nbsp;&nbsp;(5, 'Master Dushal', '12J', 91);&nbsp;(1, 'Anita', '10A', 78),<br>
+        ;</code></li>
+    <img src="2.jpg" alt="Result 2">
+
+    <li><strong>c.</strong> Display all records from the students table.<br>
+    <code>SELECT * FROM students;</code></li>
+    <img src="3.jpg" alt="Result 3">
+
+    <li><strong>d.</strong> Update the marks of a student whose name is 'Anita' to 85.<br>
+    <code>UPDATE students<br>
+        SET Marks = 85<br>
+        WHERE Name = 'Anita Bhusal';</code></li>
+    <img src="4.jpg" alt="Result 4">
+
+    <li><strong>e.</strong> Delete the record of the student with id = 3.<br>
+    <code>DELETE FROM students<br>
+        WHERE Id = 3;</code></li>
+    <img src="5.jpg" alt="Result 5">
+</ul>
+
+    <h3>12. Define the following terms.</h3>
+    <ul>
+        <li><strong>a. Data Dictionary:</strong> A centralized repository that stores metadata such as definitions, structures, constraints, and relationships for data elements in a database.</li>
+        <li><strong>b. Primary Key:</strong> A field or combination of fields that uniquely identifies each record in a table.</li>
+        <li><strong>c. Relationship:</strong> An association between two or more tables in a database, usually established through keys.</li>
+        <li><strong>d. Data Manipulation Language (DML):</strong> A subset of SQL used for retrieving, inserting, deleting, and updating data in a database.</li>
+        <li><strong>e. Structured Query Language (SQL):</strong> A standard programming language used to manage and manipulate relational databases.</li>
+        <li><strong>f. Data Integrity:</strong> The accuracy and consistency of data over its lifecycle, ensured through constraints and rules.</li>
+        <li><strong>g. Data Definition Language (DDL):</strong> A subset of SQL used to define and modify database structures, such as tables and indexes.</li>
+        <li><strong>h. Data Security:</strong> Protecting data from unauthorized access or corruption through authentication, encryption, and access controls.</li>
+        <li><strong>i. Database System:</strong> A combination of the database, DBMS software, and associated applications that manage and provide access to data.</li>
+    </ul>
+
+    <h2>Unit 2 – C Programming</h2>
+
+    <h3>1. Working with a Function</h3>
+    <ul>
+        <li><strong>a. Define Function:</strong> A function is a block of code that performs a specific task and can be reused.</li>
+        <li><strong>b. Syntax of Functions:</strong><br>
+        <code>return_type function_name(parameter_list) {<br>
+        &nbsp;&nbsp;// body of function<br>
+        }</code></li>
+        <li><strong>c. Types of Functions:</strong> Library functions (e.g., printf, scanf) and User-defined functions.</li>
+        <li><strong>d. Components of Function:</strong>
+            <ul>
+                <li><strong>i. Function Prototype</strong></li>
+                <li><strong>ii. Function Call</strong></li>
+                <li><strong>iii. Function Definition</strong></li>
+                <li><strong>iv. Return Type</strong></li>
+            </ul>
+        </li>
+    </ul>
+
+    <h3>2. Categories of Function with Example</h3>
+    <ul>
+        <li><strong>i. Function with return type but no arguments:</strong><br>
+        <code>int getValue() { return 10; }</code></li>
+
+        <li><strong>ii. Function with return type with arguments:</strong><br>
+        <code>int sum(int a, int b) { return a + b; }</code></li>
+
+        <li><strong>iii. Function with no return type and no arguments:</strong><br>
+        <code>void greet() { printf("Hello
+"); }</code></li>
+
+        <li><strong>iv. Function with no return type with arguments:</strong><br>
+        <code>void display(int x) { printf("%d", x); }</code></li>
+    </ul>
+
+    <h3>3. Storage Classes</h3>
+    <ul>
+        <li><strong>i. Automatic:</strong> Default for local variables.</li>
+        <li><strong>ii. External:</strong> Global variables accessible across files using <code>extern</code>.</li>
+        <li><strong>iii. Register:</strong> Requests that variable be stored in CPU register.</li>
+        <li><strong>iv. Static:</strong> Retains value between function calls.</li>
+    </ul>
+
+    <h3>4. Recursive Function</h3>
+    <p>A recursive function is a function that calls itself.</p>
+    <code>int factorial(int n) {<br>
+        &nbsp;&nbsp;if(n == 0) return 1;<br>
+        &nbsp;&nbsp;else return n * factorial(n - 1);<br>
+    }</code>
+
+    <h3>5. Passing Array to a Function</h3>
+    <p>Arrays can be passed to a function by specifying the array name in the parameter.</p>
+    <code>void printArray(int arr[], int size) {<br>
+        &nbsp;&nbsp;for(int i = 0; i < size; i++) {<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;printf("%d ", arr[i]);<br>
+        &nbsp;&nbsp;}<br>
+    }</code>
+
+    <h2>Unit 2 – C Programming</h2>
+
+    <h3>1. Working with a Function</h3>
+    <ul>
+        <li><strong>a. Define Function:</strong> A function is a block of code that performs a specific task, can be reused, and improves modularity.</li>
+
+        <li><strong>b. Syntax of Functions:</strong><br>
+        <code>return_type function_name(parameter_list) {<br>
+            &nbsp;&nbsp;// function body<br>
+        }</code></li>
+
+        <li><strong>c. Types of Functions:</strong>
+            <ul>
+                <li><strong>Library Functions:</strong> Built-in functions like <code>printf()</code>, <code>scanf()</code>.</li>
+                <li><strong>User-defined Functions:</strong> Functions created by programmers to perform specific tasks.</li>
+            </ul>
+        </li>
+
+        <li><strong>d. Components of Function:</strong>
+            <ul>
+                <li><strong>i. Function Prototype:</strong> Declaration of function before main.<br>
+                <code>int add(int, int);</code></li>
+
+                <li><strong>ii. Function Call:</strong> Calling function where needed.<br>
+                <code>add(5, 10);</code></li>
+
+                <li><strong>iii. Function Definition:</strong> Actual body of function.<br>
+                <code>int add(int a, int b) { return a + b; }</code></li>
+
+                <li><strong>iv. Return Type:</strong> Data type of value returned by function, e.g., <code>int</code>, <code>void</code>.</li>
+            </ul>
+        </li>
+    </ul>
+
+    <h3>2. Categories of Function with Example</h3>
+    <ul>
+        <li><strong>i. Function with return type but no arguments:</strong><br>
+        <code>int getValue() { return 10; }</code></li>
+
+        <li><strong>ii. Function with return type with arguments:</strong><br>
+        <code>int sum(int a, int b) { return a + b; }</code></li>
+
+        <li><strong>iii. Function with no return type and no arguments:</strong><br>
+        <code>void greet() { printf("Hello\n"); }</code></li>
+
+        <li><strong>iv. Function with no return type with arguments:</strong><br>
+        <code>void display(int x) { printf("%d", x); }</code></li>
+    </ul>
+
+    <h3>3. Storage Classes</h3>
+    <ul>
+        <li><strong>i. Automatic (auto):</strong> Default for local variables, lifetime is within the block.</li>
+        <li><strong>ii. External (extern):</strong> Declared outside all functions, accessible across multiple files.</li>
+        <li><strong>iii. Register:</strong> Requests storage in CPU register for faster access (compiler dependent).</li>
+        <li><strong>iv. Static:</strong> Retains value between function calls, lifetime is the entire program.</li>
+    </ul>
+
+    <h3>4. Recursive Function</h3>
+    <p>A recursive function is a function that calls itself to solve a smaller instance of the same problem.</p>
+    <code>int factorial(int n) {<br>
+        &nbsp;&nbsp;if(n == 0) return 1;<br>
+        &nbsp;&nbsp;else return n * factorial(n - 1);<br>
+    }</code>
+
+    <h3>5. Passing Array to a Function</h3>
+    <p>Arrays can be passed to functions by specifying the array name and size in the parameter list.</p>
+    <code>void printArray(int arr[], int size) {<br>
+        &nbsp;&nbsp;for(int i = 0; i < size; i++) {<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;printf("%d ", arr[i]);<br>
+        &nbsp;&nbsp;}<br>
+    }</code>
+</div>
+</body>
+</html>
