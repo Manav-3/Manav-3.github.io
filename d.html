@@ -1,0 +1,772 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Unit 1: DBMS + Unit 4: C Programming — Detailed Notes</title>
+<style>
+  :root{
+    --bg:#000000;
+    --text:#ffd8a8;
+    --accent:#ff8c00;
+    --accent-2:#ffb347;
+    --card:#111111;
+    --muted:#ffebd6;
+  }
+  html,body{height:100%}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0; background:var(--bg); color:var(--text);
+    font-family:"Times New Roman", Times, serif;
+  }
+  .layout{display:grid; grid-template-columns:280px 1fr; min-height:100vh}
+  .toc{
+    position:sticky; top:0; align-self:start; height:100vh; overflow:auto;
+    background:#0a0a0a; border-right:1px solid var(--accent);
+    padding:20px 16px; text-align:center
+  }
+  .brand{font-size:20px; font-weight:bold; color:var(--accent); letter-spacing:0.5px; margin-bottom:18px}
+  .search{width:100%; padding:8px 10px; border:1px solid var(--accent); background:#0f0f0f; color:var(--text); border-radius:6px}
+  .toc h3{color:var(--accent-2); margin:16px 0 8px 0; font-size:16px}
+  .toc a{display:block; padding:6px 8px; color:var(--text); text-decoration:none; border-radius:6px; margin:4px 0; text-align:left}
+  .toc a:hover{background:rgba(255,140,0,0.12)}
+  .toc .sub{padding-left:14px; font-size:14px}
+  .toc .tiny{padding-left:24px; font-size:13px}
+
+  .content{padding:40px 8vw; max-width:1100px; margin:0 auto; text-align:center}
+  h1{font-size:40px; color:var(--accent); margin:8px 0 24px 0}
+  h2{font-size:30px; color:var(--accent-2); margin:40px 0 14px 0}
+  h3{font-size:24px; color:var(--muted); margin:26px 0 10px 0}
+  h4{font-size:20px; color:var(--text); margin:18px 0 8px 0}
+  p, li{line-height:1.7}
+  .lead{font-size:18px; max-width:900px; margin:0 auto 20px auto}
+  .card{background:var(--card); border:1px solid rgba(255,140,0,0.35); border-radius:12px; padding:18px; margin:14px 0; text-align:left}
+  .grid{display:grid; gap:16px}
+  .grid.two{grid-template-columns:1fr;}
+  .grid.three{grid-template-columns:1fr}
+  @media(min-width:980px){.grid.two{grid-template-columns:1fr 1fr}.grid.three{grid-template-columns:repeat(3,1fr)}}
+  code, pre{font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace; background:#0e0e0e; border:1px solid rgba(255,140,0,0.35); color:#ffe3bf}
+  code{padding:2px 6px; border-radius:6px}
+  pre{padding:14px; border-radius:12px; overflow:auto; text-align:left}
+  table{width:100%; border-collapse:collapse; margin:10px 0}
+  th, td{border:1px solid rgba(255,140,0,0.35); padding:10px; text-align:left}
+  th{background:#1a1a1a; color:var(--accent-2)}
+  .pill{display:inline-block; padding:2px 10px; border:1px solid var(--accent); border-radius:999px; font-size:12px; margin:0 6px; color:var(--muted)}
+  .svg-wrap{background:#0e0e0e; border:1px solid rgba(255,140,0,0.35); border-radius:12px; padding:10px; overflow:auto}
+  .hr{height:1px; border-top:1px dashed rgba(255,140,0,0.4); margin:28px 0}
+  .tip{border-left:4px solid var(--accent); padding:10px 12px; background:#0e0e0e; border-radius:8px}
+  .small{font-size:14px}
+  .badge{border:1px solid rgba(255,140,0,0.5); padding:2px 8px; border-radius:6px; font-size:12px}
+  .center{display:flex; justify-content:center}
+  .kbd{border:1px solid rgba(255,140,0,0.5); border-bottom-width:2px; padding:2px 6px; border-radius:6px; font-family:inherit}
+  .footer{padding:30px; opacity:0.8; font-size:14px}
+</style>
+</head>
+<body>
+  <div class="layout">
+    <nav class="toc">
+      <div class="brand">Study Navigator</div>
+      <input class="search" id="tocSearch" placeholder="Filter topics" oninput="filterTOC()"/>
+      <h3>Unit 1: DBMS</h3>
+      <a href="#dbms-overview">DBMS Overview</a>
+      <a href="#data-info" class="sub">Data vs Information</a>
+      <a href="#purpose" class="sub">Database & Purpose</a>
+      <a href="#terms" class="sub">Key Terminologies</a>
+      <a href="#types" class="sub">Data Types</a>
+      <a href="#dictionary" class="sub">Data Dictionary</a>
+      <a href="#dbms-intro" class="sub">DBMS: Intro, Pros, Cons</a>
+      <a href="#models" class="sub">Database Models</a>
+      <a href="#constraints" class="sub">Integrity Constraints</a>
+      <a href="#normalization" class="sub">Normalization</a>
+      <a href="#centralized-distributed" class="sub">Centralized vs Distributed</a>
+      <a href="#security" class="sub">Database Security</a>
+      <a href="#dba" class="sub">DBA & Roles</a>
+      <a href="#er" class="sub">ER Diagrams</a>
+      <a href="#sql" class="sub">SQL: DDL/DML</a>
+      <a href="#joins" class="sub">SQL JOINs</a>
+      <h3>Unit 4: C Programming</h3>
+      <a href="#fn-overview">Functions</a>
+      <a href="#fn-prototype" class="sub">Prototype, Defn, Call</a>
+      <a href="#fn-types" class="sub">Library vs User‑Defined</a>
+      <a href="#passing" class="sub">Passing Arguments</a>
+      <a href="#scope" class="sub">Variables & Scope</a>
+      <a href="#storage" class="sub">Storage Classes</a>
+      <a href="#fn-array" class="sub">Function with Arrays</a>
+      <a href="#recursion" class="sub">Recursion</a>
+      <a href="#struct" class="sub">Structure</a>
+      <a href="#union" class="sub">Union</a>
+      <a href="#pointers" class="sub">Pointers</a>
+      <a href="#files" class="sub">File Handling</a>
+      <a href="#file-modes" class="tiny">File Modes</a>
+      <a href="#file-steps" class="tiny">Steps with Files</a>
+      <a href="#file-random" class="tiny">Random Access</a>
+      <a href="#typedef" class="sub">typedef</a>
+      <div class="hr"></div>
+      <a href="#top">Back to Top</a>
+    </nav>
+
+    <main class="content">
+      <h1 id="top">Unit 1: Database Management System & Unit 4: C Programming</h1>
+      <p class="lead">A single, self‑contained reference with detailed, exam‑ready explanations, practical examples, and crisp definitions. Use the left navigator to jump anywhere instantly.</p>
+
+      <h2 id="dbms-overview">DBMS Overview</h2>
+      <div class="card">
+        <p>A Database Management System is software that enables users and applications to define, create, maintain, secure, and query a collection of related data. It abstracts physical storage details and offers controlled, consistent, and concurrent access to data. Typical examples include MySQL, PostgreSQL, Oracle Database, and SQL Server.</p>
+        <div class="grid two">
+          <div>
+            <h4>What a DBMS provides</h4>
+            <ul>
+              <li>Data definition and schema management</li>
+              <li>Data manipulation via query languages</li>
+              <li>Transaction processing with ACID properties</li>
+              <li>Security, authorization, and auditing</li>
+              <li>Backup, recovery, and concurrency control</li>
+            </ul>
+          </div>
+          <div>
+            <h4>Why it matters</h4>
+            <ul>
+              <li>Reduces redundancy through normalization</li>
+              <li>Ensures integrity via constraints</li>
+              <li>Improves performance with indexes and optimization</li>
+              <li>Supports sharing and collaboration safely</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <h2 id="data-info">Data vs Information, Features of Information</h2>
+      <div class="card">
+        <h3>Data</h3>
+        <p>Raw facts, figures, or observations without context. Examples: 42, "2025‑09‑04", "Kathmandu".</p>
+        <h3>Information</h3>
+        <p>Processed, organized, or structured data that is meaningful and useful for decision‑making. Example: "Average temperature in Kathmandu on 2025‑09‑04 was 24°C".</p>
+        <h3>Features of Good Information</h3>
+        <ul>
+          <li>Accuracy and reliability</li>
+          <li>Timeliness and relevance</li>
+          <li>Completeness and consistency</li>
+          <li>Conciseness and clarity</li>
+          <li>Cost‑effectiveness</li>
+        </ul>
+      </div>
+
+      <h2 id="purpose">Database and its Purpose</h2>
+      <div class="card">
+        <p>A database is an organized collection of interrelated data stored to model some domain. Its purpose is to support efficient retrieval, insertion, update, and deletion while preserving integrity and security. It enables shared access, eliminates anomalies, and scales with growth.</p>
+      </div>
+
+      <h2 id="terms">Key Terminologies</h2>
+      <div class="card grid two">
+        <div>
+          <h3>Table, Field, Record, Tuple, Object, Keys</h3>
+          <ul>
+            <li><b>Table (Relation)</b>: Set of rows and columns representing an entity type.</li>
+            <li><b>Field (Column/Attribute)</b>: Named property of the entity; each column has a data type and constraints.</li>
+            <li><b>Record (Row)</b>: One instance of an entity; a collection of field values.</li>
+            <li><b>Tuple</b>: Theoretical term for a row in relational algebra.</li>
+            <li><b>Object</b>: In object databases, encapsulates state (attributes) and behavior (methods).</li>
+            <li><b>Keys</b>: Attributes that identify and relate records. See below.</li>
+          </ul>
+        </div>
+        <div>
+          <h3>Common Key Types</h3>
+          <ul>
+            <li><span class="pill">Candidate Key</span> Minimal attribute set that uniquely identifies a record.</li>
+            <li><span class="pill">Primary Key</span> Chosen candidate key used as the main identifier; not null and unique.</li>
+            <li><span class="pill">Alternate Key</span> Candidate key not selected as primary.</li>
+            <li><span class="pill">Foreign Key</span> Attribute in one table referencing a candidate/primary key in another table.</li>
+            <li><span class="pill">Composite Key</span> Two or more attributes together uniquely identify a row.</li>
+            <li><span class="pill">Surrogate Key</span> Artificial key (e.g., auto‑increment id) used when natural key is complex.</li>
+          </ul>
+        </div>
+      </div>
+
+      <h2 id="types">Data Types</h2>
+      <div class="card">
+        <div class="grid three">
+          <div>
+            <h4>Numeric</h4>
+            <ul>
+              <li>Integer types</li>
+              <li>Floating‑point</li>
+              <li>Fixed‑precision decimal</li>
+            </ul>
+          </div>
+          <div>
+            <h4>Character & String</h4>
+            <ul>
+              <li>CHAR (fixed length)</li>
+              <li>VARCHAR (variable length)</li>
+              <li>TEXT/CLOB</li>
+            </ul>
+          </div>
+          <div>
+            <h4>Date/Time & Others</h4>
+            <ul>
+              <li>DATE, TIME, TIMESTAMP</li>
+              <li>BOOLEAN</li>
+              <li>BLOB/BINARY, JSON, ENUM</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <h2 id="dictionary">Data Dictionary</h2>
+      <div class="card">
+        <p>A data dictionary is a centralized repository of metadata: table names, columns, data types, constraints, indexes, views, procedures, and access rights. It helps developers, analysts, and DBAs understand structure, lineage, and rules. In many DBMSs, it is exposed as system catalogs.</p>
+      </div>
+
+      <h2 id="dbms-intro">DBMS: Introduction, Objectives, Advantages, Disadvantages</h2>
+      <div class="card grid two">
+        <div>
+          <h3>Introduction & Objectives</h3>
+          <ul>
+            <li>Provide logical data independence from physical storage</li>
+            <li>Ensure integrity, consistency, and concurrent access</li>
+            <li>Enable expressive querying and reporting</li>
+            <li>Support security, auditing, backup, and recovery</li>
+          </ul>
+        </div>
+        <div>
+          <h3>Advantages & Disadvantages</h3>
+          <ul>
+            <li>Advantages: reduced redundancy, better integrity, shared data, scalability, performance tuning</li>
+            <li>Disadvantages: complexity, cost, single point of failure (if centralized), need for skilled administration</li>
+          </ul>
+        </div>
+      </div>
+
+      <h2 id="models">Types of Database Model</h2>
+      <div class="card">
+        <h3>Hierarchical Model</h3>
+        <p>Data is organized as a tree of parent–child records. One parent can have many children; each child has exactly one parent. Efficient for one‑to‑many navigation but inflexible for many‑to‑many.</p>
+        <h3>Network Model</h3>
+        <p>Generalizes the hierarchical model using sets and pointers, allowing a record to have multiple parents. Flexible but complex and tightly coupled to physical paths.</p>
+        <h3>Relational Model</h3>
+        <p>Data is represented as relations (tables) manipulated by relational algebra and SQL. Emphasizes logical independence, declarative queries, and normalization.</p>
+        <h3>Entity–Relationship (ER) Model</h3>
+        <p>Conceptual model describing entities, attributes, and relationships with cardinalities. Often used at design time and later mapped to relational schemas.</p>
+      </div>
+
+      <h2 id="constraints">Integrity Constraints and Types</h2>
+      <div class="card grid three">
+        <div>
+          <h4>Domain Integrity</h4>
+          <p>Each attribute value must be from its declared domain and satisfy checks.</p>
+          <pre><code>age INT CHECK (age BETWEEN 0 AND 150)</code></pre>
+        </div>
+        <div>
+          <h4>Entity Integrity</h4>
+          <p>Primary keys are unique and not null, guaranteeing that each row is identifiable.</p>
+          <pre><code>PRIMARY KEY (student_id)</code></pre>
+        </div>
+        <div>
+          <h4>Referential Integrity</h4>
+          <p>Foreign keys must reference existing primary/candidate keys or be null, maintaining consistency across tables.</p>
+          <pre><code>FOREIGN KEY (dept_id) REFERENCES department(id)</code></pre>
+        </div>
+      </div>
+
+      <h2 id="normalization">Normalization</h2>
+      <div class="card">
+        <h3>Introduction</h3>
+        <p>Normalization is the stepwise decomposition and restructuring of tables to remove redundancy and update anomalies while preserving dependencies.</p>
+        <h3>Normal Forms</h3>
+        <ul>
+          <li><b>1NF</b>: No repeating groups; atomic values per cell.</li>
+          <li><b>2NF</b>: In 1NF and every non‑key attribute fully depends on the whole candidate key (no partial dependency on part of a composite key).</li>
+          <li><b>3NF</b>: In 2NF and no transitive dependency of non‑key attributes on keys.</li>
+        </ul>
+        <h3>Advantages</h3>
+        <ul>
+          <li>Eliminates redundancy and anomalies</li>
+          <li>Improves integrity and clarity of schema</li>
+        </ul>
+        <h3>Disadvantages</h3>
+        <ul>
+          <li>More tables and joins may impact query performance</li>
+          <li>Over‑normalization can complicate reporting</li>
+        </ul>
+        <div class="tip small">BCNF, 4NF, and 5NF further refine dependency rules for special cases like overlapping keys and multi‑valued dependencies.</div>
+      </div>
+
+      <h2 id="centralized-distributed">Centralized and Distributed Database</h2>
+      <div class="card">
+        <h3>Introduction</h3>
+        <p><b>Centralized</b> databases keep all data at a single site. <b>Distributed</b> databases split or replicate data across multiple sites connected by a network, coordinated by a distributed DBMS.</p>
+        <h3>Diagram</h3>
+        <div class="svg-wrap center">
+          <svg width="780" height="260" viewBox="0 0 780 260" xmlns="http://www.w3.org/2000/svg">
+            <rect x="10" y="10" width="360" height="240" rx="12" fill="#111" stroke="#ff8c00"/>
+            <text x="30" y="34" fill="#ffb347" font-size="16">Centralized</text>
+            <rect x="60" y="60" width="100" height="60" rx="8" fill="#1a1a1a" stroke="#ff8c00"/>
+            <text x="72" y="95" fill="#ffd8a8" font-size="12">Clients</text>
+            <line x1="110" y1="120" x2="240" y2="160" stroke="#ff8c00"/>
+            <rect x="220" y="150" width="120" height="70" rx="8" fill="#1a1a1a" stroke="#ff8c00"/>
+            <text x="232" y="190" fill="#ffd8a8" font-size="12">DB Server</text>
+
+            <rect x="410" y="10" width="360" height="240" rx="12" fill="#111" stroke="#ff8c00"/>
+            <text x="430" y="34" fill="#ffb347" font-size="16">Distributed</text>
+            <circle cx="500" cy="160" r="28" fill="#1a1a1a" stroke="#ff8c00"/>
+            <text x="488" y="165" fill="#ffd8a8" font-size="10">Site A</text>
+            <circle cx="590" cy="100" r="28" fill="#1a1a1a" stroke="#ff8c00"/>
+            <text x="578" y="105" fill="#ffd8a8" font-size="10">Site B</text>
+            <circle cx="680" cy="160" r="28" fill="#1a1a1a" stroke="#ff8c00"/>
+            <text x="668" y="165" fill="#ffd8a8" font-size="10">Site C</text>
+            <line x1="500" y1="160" x2="590" y2="100" stroke="#ff8c00"/>
+            <line x1="590" y1="100" x2="680" y2="160" stroke="#ff8c00"/>
+            <line x1="500" y1="160" x2="680" y2="160" stroke="#ff8c00"/>
+          </svg>
+        </div>
+        <div class="grid two">
+          <div>
+            <h4>Advantages</h4>
+            <ul>
+              <li>Centralized: simpler management, strong consistency, easier backup</li>
+              <li>Distributed: locality of access, fault tolerance, scalability, availability</li>
+            </ul>
+          </div>
+          <div>
+            <h4>Disadvantages</h4>
+            <ul>
+              <li>Centralized: single point of failure, network latency for remote users</li>
+              <li>Distributed: complex design, distributed transactions, replication lag</li>
+            </ul>
+          </div>
+        </div>
+        <h3>Comparison</h3>
+        <table>
+          <tr><th>Aspect</th><th>Centralized</th><th>Distributed</th></tr>
+          <tr><td>Fault Tolerance</td><td>Low</td><td>High with replication</td></tr>
+          <tr><td>Consistency</td><td>Strong, simpler</td><td>Trade‑offs (CAP)</td></tr>
+          <tr><td>Latency</td><td>Higher for distant clients</td><td>Lower for local reads</td></tr>
+          <tr><td>Administration</td><td>Simpler</td><td>Complex</td></tr>
+        </table>
+      </div>
+
+      <h2 id="security">Database Security</h2>
+      <div class="card">
+        <h3>Introduction</h3>
+        <p>Database security protects confidentiality, integrity, and availability of data against threats such as unauthorized access, injection, privilege misuse, and ransomware.</p>
+        <h3>Challenges</h3>
+        <ul>
+          <li>Insider threats and excessive privileges</li>
+          <li>Weak authentication and poor encryption</li>
+          <li>SQL injection and misconfigured applications</li>
+          <li>Backup/replication exposure</li>
+        </ul>
+        <h3>Security Measures</h3>
+        <ul>
+          <li>Least privilege, role‑based access control</li>
+          <li>Strong authentication and MFA</li>
+          <li>At‑rest and in‑transit encryption</li>
+          <li>Input validation and prepared statements</li>
+          <li>Auditing, monitoring, regular patching, backups</li>
+        </ul>
+      </div>
+
+      <h2 id="dba">DBA and Roles of DBA</h2>
+      <div class="card">
+        <p>The Database Administrator installs, configures, secures, monitors, and tunes databases. Roles include capacity planning, schema design review, backup and recovery strategy, performance tuning, user management, patching, and compliance reporting.</p>
+      </div>
+
+      <h2 id="er">ER Diagrams</h2>
+      <div class="card">
+        <h3>Introduction</h3>
+        <p>Entity–Relationship diagrams visualize entities, attributes, and relationships with cardinalities and degrees to build a clear conceptual design.</p>
+        <h3>Core Concepts</h3>
+        <ul>
+          <li><b>Entity</b>: Real‑world object or concept represented as a rectangle.</li>
+          <li><b>Attribute</b>: Property of an entity, drawn as an oval; key attributes are underlined.</li>
+          <li><b>Relationship</b>: Association between entities, drawn as a diamond; annotated with cardinality (1:1, 1:N, M:N).</li>
+          <li><b>Cardinality & Degree</b>: Number of instances related and number of participating entity types.</li>
+        </ul>
+        <div class="svg-wrap center">
+          <svg width="760" height="220" viewBox="0 0 760 220" xmlns="http://www.w3.org/2000/svg">
+            <rect x="40" y="30" width="140" height="60" fill="#1a1a1a" stroke="#ff8c00" rx="8"/>
+            <text x="75" y="65" fill="#ffd8a8">STUDENT</text>
+            <ellipse cx="110" cy="15" rx="60" ry="18" fill="#1a1a1a" stroke="#ff8c00"/>
+            <text x="92" y="18" fill="#ffd8a8" font-size="12">roll_no</text>
+            <line x1="110" y1="30" x2="110" y2="15" stroke="#ff8c00"/>
+            <ellipse cx="30" cy="60" rx="50" ry="18" fill="#1a1a1a" stroke="#ff8c00"/>
+            <text x="8" y="63" fill="#ffd8a8" font-size="12">name</text>
+            <line x1="40" y1="60" x2="80" y2="60" stroke="#ff8c00"/>
+
+            <polygon points="330,60 360,90 330,120 300,90" fill="#1a1a1a" stroke="#ff8c00"/>
+            <text x="312" y="95" fill="#ffd8a8">ENROLLED</text>
+
+            <rect x="470" y="30" width="140" height="60" fill="#1a1a1a" stroke="#ff8c00" rx="8"/>
+            <text x="505" y="65" fill="#ffd8a8">COURSE</text>
+            <ellipse cx="540" cy="15" rx="60" ry="18" fill="#1a1a1a" stroke="#ff8c00"/>
+            <text x="525" y="18" fill="#ffd8a8" font-size="12">code</text>
+            <line x1="540" y1="30" x2="540" y2="15" stroke="#ff8c00"/>
+
+            <line x1="180" y1="60" x2="300" y2="90" stroke="#ff8c00"/>
+            <line x1="360" y1="90" x2="470" y2="60" stroke="#ff8c00"/>
+            <text x="210" y="80" fill="#ffb347" font-size="12">1..*</text>
+            <text x="420" y="80" fill="#ffb347" font-size="12">1..*</text>
+          </svg>
+        </div>
+        <p class="small">Symbols: rectangle (entity), oval (attribute), underlined key attribute, diamond (relationship), annotated cardinalities.</p>
+      </div>
+
+      <h2 id="sql">SQL: DDL and DML</h2>
+      <div class="card">
+        <h3>DDL (Data Definition Language)</h3>
+        <pre><code>CREATE TABLE student (
+  roll_no INT PRIMARY KEY,
+  name VARCHAR(60) NOT NULL,
+  dept_id INT,
+  email VARCHAR(120) UNIQUE,
+  CONSTRAINT fk_dept FOREIGN KEY (dept_id) REFERENCES department(id)
+);
+ALTER TABLE student ADD COLUMN joined_on DATE;
+DROP TABLE department;</code></pre>
+        <h3>DML (Data Manipulation Language)</h3>
+        <pre><code>INSERT INTO department(id, name) VALUES (1, 'CS');
+UPDATE student SET dept_id = 1 WHERE roll_no = 101;
+DELETE FROM student WHERE roll_no = 999;
+SELECT name, email FROM student WHERE dept_id = 1 ORDER BY name;</code></pre>
+        <h3>Data Constraints</h3>
+        <ul>
+          <li>NOT NULL, UNIQUE, PRIMARY KEY, FOREIGN KEY, CHECK</li>
+          <li>AUTO INCREMENT example: <code>id INT GENERATED ALWAYS AS IDENTITY</code></li>
+        </ul>
+        <h3>Operators and Clauses</h3>
+        <pre><code>SELECT * FROM student WHERE dept_id = 1 AND email IS NOT NULL;
+SELECT * FROM student WHERE dept_id = 2 OR dept_id = 3;
+SELECT * FROM student WHERE NOT (name LIKE 'A%');
+SELECT * FROM student WHERE dept_id IN (1,2) ORDER BY name;</code></pre>
+      </div>
+
+      <h2 id="joins">SQL JOINs</h2>
+      <div class="card">
+        <div class="grid two">
+          <div>
+            <h3>Tables</h3>
+            <table>
+              <tr><th>student</th><th>dept_id</th></tr>
+              <tr><td>Arun</td><td>1</td></tr>
+              <tr><td>Bina</td><td>2</td></tr>
+              <tr><td>Chirag</td><td>2</td></tr>
+            </table>
+            <table>
+              <tr><th>department</th><th>id</th></tr>
+              <tr><td>CS</td><td>1</td></tr>
+              <tr><td>IT</td><td>2</td></tr>
+              <tr><td>ECE</td><td>3</td></tr>
+            </table>
+          </div>
+          <div>
+            <h3>Queries</h3>
+            <pre><code>SELECT s.student, d.department
+FROM student s INNER JOIN department d
+ON s.dept_id = d.id;</code></pre>
+            <pre><code>SELECT s.student, d.department
+FROM student s LEFT JOIN department d
+ON s.dept_id = d.id;</code></pre>
+            <pre><code>SELECT s.student, d.department
+FROM student s RIGHT JOIN department d
+ON s.dept_id = d.id;</code></pre>
+            <pre><code>SELECT COALESCE(s.student,'-') AS student,
+       COALESCE(d.department,'-') AS department
+FROM student s FULL OUTER JOIN department d
+ON s.dept_id = d.id;</code></pre>
+          </div>
+        </div>
+      </div>
+
+      <h2 id="fn-overview">C Functions: Introduction, Syntax, Purpose, Advantages</h2>
+      <div class="card">
+        <p>A function is a named, reusable block of code that performs a specific task. Functions promote modularity, readability, testing, and reuse. They support parameterization and return values.</p>
+        <h3>General Syntax</h3>
+        <pre><code>return_type function_name(parameter_list){
+  statements;
+  return expression; /* optional if return_type is void */
+}</code></pre>
+        <h3>Components</h3>
+        <ul>
+          <li>Prototype (declaration)</li>
+          <li>Definition (body)</li>
+          <li>Call site</li>
+          <li>Parameters and arguments</li>
+          <li>Return statement and return type</li>
+        </ul>
+      </div>
+
+      <h2 id="fn-prototype">Prototype, Function Definition, Function Call, Return</h2>
+      <div class="card grid two">
+        <div>
+          <h3>Prototype</h3>
+          <pre><code>int add(int a, int b);</code></pre>
+          <h3>Definition</h3>
+          <pre><code>int add(int a, int b){
+  return a + b;
+}</code></pre>
+          <h3>Call</h3>
+          <pre><code>int s = add(3, 5);</code></pre>
+        </div>
+        <div>
+          <h3>Return Statement</h3>
+          <pre><code>double avg(double x, double y){
+  double s = x + y;
+  return s / 2.0;
+}</code></pre>
+        </div>
+      </div>
+
+      <h2 id="fn-types">Types: Library vs User‑Defined</h2>
+      <div class="card">
+        <ul>
+          <li>Library functions: available via headers, such as <code>printf</code>, <code>scanf</code>, <code>strlen</code>.</li>
+          <li>User‑defined functions: created by programmers to solve domain problems.</li>
+        </ul>
+      </div>
+
+      <h2 id="passing">Passing Arguments: Call by Value and Call by Reference</h2>
+      <div class="card grid two">
+        <div>
+          <h3>Call by Value</h3>
+          <pre><code>void inc(int x){ x = x + 1; }
+int main(){ int a = 5; inc(a); /* a remains 5 */ }</code></pre>
+        </div>
+        <div>
+          <h3>Call by Reference (via pointers)</h3>
+          <pre><code>void inc(int *x){ *x = *x + 1; }
+int main(){ int a = 5; inc(&a); /* a becomes 6 */ }</code></pre>
+        </div>
+      </div>
+
+      <h2 id="scope">Variable and its Scope: Local vs Global</h2>
+      <div class="card grid two">
+        <div>
+          <h3>Local</h3>
+          <pre><code>int main(){ int x = 10; }</code></pre>
+        </div>
+        <div>
+          <h3>Global</h3>
+          <pre><code>int g = 5;
+void f(){ g = g + 1; }</code></pre>
+        </div>
+      </div>
+
+      <h2 id="storage">Storage Classes</h2>
+      <div class="card grid two">
+        <div>
+          <h3>Automatic (auto)</h3>
+          <pre><code>void f(){ auto int x = 0; }</code></pre>
+          <h3>Register</h3>
+          <pre><code>void g(){ register int i; }</code></pre>
+        </div>
+        <div>
+          <h3>External (extern)</h3>
+          <pre><code>extern int g; int main(){ return g; }</code></pre>
+          <h3>Static</h3>
+          <pre><code>void counter(){ static int c = 0; c++; }</code></pre>
+        </div>
+      </div>
+
+      <h2 id="fn-array">Function with Array</h2>
+      <div class="card">
+        <pre><code>int sum(int a[], int n){
+  int s = 0; for(int i=0;i<n;i++) s += a[i]; return s;
+}
+int main(){ int v[5]={1,2,3,4,5}; int s = sum(v,5); }</code></pre>
+      </div>
+
+      <h2 id="recursion">Recursive Function</h2>
+      <div class="card grid two">
+        <div>
+          <h3>Syntax and Example</h3>
+          <pre><code>int fact(int n){ if(n<=1) return 1; return n*fact(n-1); }</code></pre>
+        </div>
+        <div>
+          <h3>Advantages and Disadvantages</h3>
+          <ul>
+            <li>Advantages: elegant for divide‑and‑conquer, tree/graph traversal</li>
+            <li>Disadvantages: stack usage, overhead; iterative may be faster</li>
+          </ul>
+        </div>
+      </div>
+
+      <h2 id="struct">Structure: Intro, Size, Access, Nested, Array, Passing</h2>
+      <div class="card">
+        <h3>Definition and Access</h3>
+        <pre><code>struct Student{ int id; char name[40]; float gpa; };
+int main(){
+  struct Student s = {101, "Arun", 3.7f};
+  s.gpa = 3.8f;
+}</code></pre>
+        <h3>Size</h3>
+        <pre><code>sizeof(struct Student)</code></pre>
+        <h3>Nested Structure</h3>
+        <pre><code>struct Date{int d,m,y;};
+struct Student{ int id; struct Date dob; };</code></pre>
+        <h3>Array of Structure</h3>
+        <pre><code>struct Student cls[3] = {{1,{1,1,2000}},{2,{2,2,2001}},{3,{3,3,2002}}};</code></pre>
+        <h3>Passing Structure to Function</h3>
+        <pre><code>void printStudent(struct Student s){ /* use s */ }
+void bumpGPA(struct Student *s){ s->gpa += 0.1f; }</code></pre>
+      </div>
+
+      <h2 id="union">Union: Intro and Comparison</h2>
+      <div class="card grid two">
+        <div>
+          <h3>Introduction and Syntax</h3>
+          <pre><code>union Number{ int i; float f; };
+int main(){ union Number n; n.i = 10; }</code></pre>
+        </div>
+        <div>
+          <h3>Structure vs Union</h3>
+          <table>
+            <tr><th>Aspect</th><th>Structure</th><th>Union</th></tr>
+            <tr><td>Storage</td><td>Sum of member sizes</td><td>Size of largest member</td></tr>
+            <tr><td>Access</td><td>All members at once</td><td>One active at a time</td></tr>
+          </table>
+        </div>
+      </div>
+
+      <h2 id="pointers">Pointers</h2>
+      <div class="card">
+        <h3>Introduction and Syntax</h3>
+        <pre><code>int *p; int x = 5; p = &x; int y = *p;</code></pre>
+        <h3>Usage and Working</h3>
+        <ul>
+          <li>Dynamic memory, arrays, strings</li>
+          <li>Function parameters for reference semantics</li>
+          <li>Data structures (lists, trees)</li>
+        </ul>
+        <h3>Value and Address</h3>
+        <pre><code>int x = 5; int *px = &x; int v = *px;</code></pre>
+        <h3>Pointer and Function</h3>
+        <pre><code>void swap(int *a, int *b){ int t=*a; *a=*b; *b=t; }</code></pre>
+        <h3>Call by Reference Example</h3>
+        <pre><code>int a=2,b=7; swap(&a,&b);</code></pre>
+        <h3>Pointer with Arrays</h3>
+        <pre><code>int a[3]={10,20,30}; int *p=a; int second=*(p+1);</code></pre>
+        <h3>Advantages and Disadvantages</h3>
+        <ul>
+          <li>Advantages: efficiency, flexibility, dynamic structures</li>
+          <li>Disadvantages: dangling pointers, memory leaks, complexity</li>
+        </ul>
+      </div>
+
+      <h2 id="files">File Handling in C</h2>
+      <div class="card">
+        <h3>Concept and Need</h3>
+        <p>Data files persist program output beyond process lifetime. File handling allows reading/writing large, structured datasets and logs.</p>
+        <h3>Sequential vs Random Files</h3>
+        <ul>
+          <li>Sequential: processed from start to end</li>
+          <li>Random: direct access to arbitrary positions using offsets</li>
+        </ul>
+        <h3>Core Functions (Purpose and Syntax)</h3>
+        <div class="grid two">
+          <div>
+            <pre><code>FILE *fopen(const char *path, const char *mode);
+int fclose(FILE *stream);
+int getc(FILE *stream);
+int putc(int c, FILE *stream);
+int fprintf(FILE *stream, const char *fmt, ...);
+int fscanf(FILE *stream, const char *fmt, ...);
+int getw(FILE *stream);
+int putw(int w, FILE *stream);
+char *fgets(char *s, int n, FILE *stream);
+int fputs(const char *s, FILE *stream);
+size_t fread(void *ptr,size_t size,size_t nmemb,FILE *stream);
+size_t fwrite(const void *ptr,size_t size,size_t nmemb,FILE *stream);
+int remove(const char *path);
+int rename(const char *old, const char *newname);</code></pre>
+          </div>
+          <div>
+            <div class="tip small">Use <span class="kbd">b</span> in modes for binary files, such as <code>"rb"</code> and <code>"wb"</code>.</div>
+            <pre><code>FILE *fp = fopen("data.txt","w");
+fprintf(fp, "%d %s\n", 101, "Arun");
+fclose(fp);</code></pre>
+            <pre><code>FILE *fp = fopen("data.txt","r");
+int id; char name[40];
+fscanf(fp, "%d %39s", &id, name);
+fclose(fp);</code></pre>
+          </div>
+        </div>
+      </div>
+
+      <h2 id="file-random">Random Access Functions</h2>
+      <div class="card grid three">
+        <div>
+          <h3>fseek</h3>
+          <pre><code>int fseek(FILE *stream, long offset, int origin);</code></pre>
+          <p class="small">Moves the file position indicator relative to <code>SEEK_SET</code>, <code>SEEK_CUR</code>, or <code>SEEK_END</code>.</p>
+        </div>
+        <div>
+          <h3>rewind</h3>
+          <pre><code>void rewind(FILE *stream);</code></pre>
+          <p class="small">Sets position to the beginning of the file; clears error and EOF flags.</p>
+        </div>
+        <div>
+          <h3>ftell</h3>
+          <pre><code>long ftell(FILE *stream);</code></pre>
+          <p class="small">Returns current file position as a byte offset from the start.</p>
+        </div>
+      </div>
+
+      <h2 id="file-modes">File Opening Modes</h2>
+      <div class="card">
+        <table>
+          <tr><th>Mode</th><th>Description</th></tr>
+          <tr><td>r</td><td>Read, file must exist</td></tr>
+          <tr><td>r+</td><td>Read/Write, file must exist</td></tr>
+          <tr><td>w</td><td>Write, truncate or create</td></tr>
+          <tr><td>w+</td><td>Read/Write, truncate or create</td></tr>
+          <tr><td>a</td><td>Append, create if not exists</td></tr>
+          <tr><td>a+</td><td>Read/Append, create if not exists</td></tr>
+        </table>
+      </div>
+
+      <h2 id="file-steps">Steps to Work with Files</h2>
+      <div class="card grid two">
+        <div>
+          <ol>
+            <li>Define file pointer: <code>FILE *fp;</code></li>
+            <li>Open with required mode: <code>fp = fopen("data.txt","r");</code></li>
+            <li>Perform read/write/append operations</li>
+            <li>Close the file: <code>fclose(fp);</code></li>
+          </ol>
+        </div>
+        <div>
+          <h4>Reading</h4>
+          <pre><code>char line[128]; FILE *fp=fopen("a.txt","r");
+while(fgets(line,128,fp)) { /* process line */ }
+fclose(fp);</code></pre>
+          <h4>Writing</h4>
+          <pre><code>FILE *fp=fopen("a.txt","w");
+fprintf(fp, "%s\n", "hello"); fclose(fp);</code></pre>
+          <h4>Appending</h4>
+          <pre><code>FILE *fp=fopen("a.txt","a");
+fputs("more\n", fp); fclose(fp);</code></pre>
+          <h4>EOF</h4>
+          <pre><code>int c; while((c=getc(fp))!=EOF){ /* ... */ }</code></pre>
+        </div>
+      </div>
+
+      <h2 id="typedef">typedef Keyword in C</h2>
+      <div class="card">
+        <pre><code>typedef unsigned long ulong;
+typedef struct Student STU;</code></pre>
+        <p>Creates type aliases that improve readability and portability.</p>
+      </div>
+
+      <div class="footer">Prepared for quick revision and deep understanding. Use the navigator to jump around. All examples are minimal and focused.</div>
+    </main>
+  </div>
+<script>
+  function filterTOC(){
+    const q = document.getElementById('tocSearch').value.toLowerCase();
+    document.querySelectorAll('.toc a').forEach(a=>{
+      a.style.display = a.textContent.toLowerCase().includes(q) ? 'block' : 'none';
+    });
+  }
+</script>
+</body>
+</html>
